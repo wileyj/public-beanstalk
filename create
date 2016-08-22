@@ -1,0 +1,27 @@
+rm /var/tmp/*.json
+python beanstalk.py \
+--region us-east-1 \
+--app app-name-dev-2 \
+--env dev \
+--minsize 1 \
+--maxsize 1 \
+--key_name base \
+--instance t2.micro \
+--elbtype external \
+--disk singledisk \
+--bucket bucket-name \
+--app_type rails \
+--env_vars '[
+    {
+        "RAILS_ENV": "production",
+        "RACK_ENV": "production",
+        "RAILS_ENV": "production",
+        "RAILS_SKIP_ASSET_COMPILATION": "false",
+        "RAILS_SKIP_MIGRATIONS": "false",
+        "RDS_HOSTNAME": "hostname.rds.amazonaws.com",
+        "RDS_USERNAME": "user",
+        "RDS_PASSWORD": "password",
+        "RDS_PORT": "5432",
+        "REGION": "us-east-1"
+    }
+]'

@@ -1,0 +1,4 @@
+python beanstalk.py \
+--region us-east-1 \
+--app app-name-dev-2 \
+--terminate Yes

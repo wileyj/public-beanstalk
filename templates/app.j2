@@ -1,0 +1,63 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Elastic Beanstalk Stack",
+    "Parameters": {
+        "Environment": {
+            "Type": "String",
+            "Default": "{{environment}}"
+        },
+        "AppName": {
+            "Type": "String",
+            "Default": "{{sns_topic_lower}}"
+        },
+        "SNSTopicName": {
+            "Type": "String",
+            "Default": "{{sns_topic_lower}}"
+        },
+        "SNSDisplayName": {
+            "Type": "String",
+            "Default": "{{sns_topic}}"
+        }
+    },
+    "Mappings": {},
+    "Resources": {
+        "Sns": {
+            "Type": "AWS::SNS::Topic",
+            "Properties": {
+                "TopicName": "{{sns_topic}}",
+                "DisplayName": "{{sns_topic_lower}}"
+            }
+        },
+        "Application": {
+            "Type": "AWS::ElasticBeanstalk::Application",
+            "Properties": {
+                "ApplicationName": { "Ref" : "AppName"},
+                "Description": "AWS Elastic Beanstalk Application"
+            }
+        }
+    },
+    "Outputs": {
+        "Stack": {
+            "Description": "Stack",
+            "Value": {
+                "Ref": "AWS::StackId"
+            }
+        },
+        "Environment": {
+            "Description": "Environment",
+            "Value": "{{environment}}"
+        },
+        "ApplicationName": {
+            "Description" : "Application",
+            "Value"       : "{{sns_topic_lower}}"
+        },
+        "SNSTopicName": {
+            "Description": "SNSTopicName",
+            "Value": "{{sns_topic_lower}}"
+        },
+        "SNSDisplayName": {
+            "Description": "SNSDisplayName",
+            "Value": "{{sns_topic}}"
+        }
+    }
+}

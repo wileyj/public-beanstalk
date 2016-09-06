@@ -760,7 +760,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--account",
         metavar="",
-        default="349339268584",
+        default="",
         help="AWS Account ID"
     )
     parser.add_argument(
